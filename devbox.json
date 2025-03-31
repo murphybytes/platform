@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.14.0/.schema/devbox.schema.json",
+  "packages": [
+    "go@1.24.1",
+    "delve@latest",
+    "minikube@latest",
+    "docker@latest",
+    "kubernetes-helm-wrapped@latest",
+    "kubectl@latest",
+    "argocd@latest",
+  ],
+  "env": {
+    "MINIKUBE_HOME": "$PWD/home/.minikube",
+    "KUBECONFIG":    "$PWD/home/.kube/config",
+  },
+  "shell": {
+    "init_hook": [
+      "helm repo add argo https://argoproj.github.io/argo-helm",
+    ],
+    "scripts": {
+      "minikube":     ["./scripts/minikube.sh"],
+      "bootstrap": ["./scripts/bootstrap.sh"],
+    },
+  },
+}
